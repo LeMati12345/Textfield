@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Text Field</title>
+  <style>
+    input {
+      font-size: 20px;
+      padding: 8px 12px;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      outline: none;
+      width: 50%;
+      height: 10%;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="field" placeholder="Wpisz odpowiedź">
+
+  <script>
+    const field = document.getElementById("field");
+
+    // Send the text value to the parent (Turbowarp)
+    field.addEventListener("input", () => {
+      window.parent.postMessage(
+        { type: "answer", value: field.value },
+        "*"
+      );
+    });
+  </script>
+</body>
+</html>
